@@ -24,7 +24,7 @@ if( isset($var[0], $var[1]) && $var[0] == 'edit' )
 	
 	$result = $this->db->query("SELECT * FROM lf_pages WHERE id = ".$match[0]);
 	$row = mysql_fetch_assoc($result);
-	$html = '
+	echo '
 		<form action="%baseurl%apps/manage/pages/edit/'.$row['id'].'/" method="post">
 			<input type="submit" value="Save" /> '.$msg.'
 			<br /><br />
@@ -34,8 +34,10 @@ if( isset($var[0], $var[1]) && $var[0] == 'edit' )
 			<br />
 			<input type="submit" value="Save" /> '.$msg.'
 		</form>
-	';
+	'; 
+		readfile(ROOT.'system/lib/editor.js');
 } 
+
 else if( isset($var[0]) && $var[0] == 'rm' )
 {
 	$result = $this->db->query("DELETE FROM lf_pages WHERE id = ".intval($var[1]));
@@ -58,7 +60,7 @@ else if( isset($var[0]) && $var[0] == 'new' )
 		$msg = 'Page Created.';
 	} 
 	// else { didnt post }
-	$html = '
+	echo '
 		<form action="%baseurl%apps/manage/pages/new/" method="post">
 			<input type="submit" value="Submit" /> '.$msg.'
 			<br /><br />
@@ -69,26 +71,25 @@ else if( isset($var[0]) && $var[0] == 'new' )
 			<input type="submit" value="Submit" /> '.$msg.'
 		</form>
 	';
-} 
+	
+	readfile(ROOT.'system/lib/editor.js');
+}
 else 
 {
 	
 	// No article selected
-	//$html .= '<h4><a href="%baseurl%apps/manage/pages/">Pages</a> / Manage</h4>';
+	//echo '<h4><a href="%baseurl%apps/manage/pages/">Pages</a> / Manage</h4>';
 	$html = '<h3>(<a href="%baseurl%apps/manage/pages/new/">Create New Page</a>)</h3>';
-	$html .= '<p>Select an article below to edit it.</p>';
-	$html .= '<ol>';
+	echo '<p>Select an article below to edit it.</p>';
+	echo '<ol>';
 	
 	$result = $this->db->query('SELECT id, title FROM lf_pages ORDER BY id');
 	while($row = mysql_fetch_assoc($result))
 	{
-		$html .= '<li>[<a href="%baseurl%apps/manage/pages/rm/'.$row['id'].'/">x</a>] <a href="%baseurl%apps/manage/pages/edit/'.$row['id'].'/">'.$row['title'].'</a></li>';
+		echo '<li>[<a href="%baseurl%apps/manage/pages/rm/'.$row['id'].'/">x</a>] <a href="%baseurl%apps/manage/pages/edit/'.$row['id'].'/">'.$row['title'].'</a></li>';
 	}
 		
-	$html .= '</ol>';
+	echo '</ol>';
 }
-
-echo $html;
-readfile(ROOT.'system/lib/editor.js');
 
 ?>
