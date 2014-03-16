@@ -79,7 +79,7 @@ else
 	
 	// No article selected
 	//echo '<h4><a href="%baseurl%apps/manage/pages/">Pages</a> / Manage</h4>';
-	$html = '<h3>(<a href="%baseurl%apps/manage/pages/new/">Create New Page</a>)</h3>';
+	echo '<h3>(<a href="%baseurl%apps/manage/pages/new/">Create New Page</a>)</h3>';
 	echo '<p>Select an article below to edit it.</p>';
 	echo '<ol>';
 	
