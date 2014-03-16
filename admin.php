@@ -30,16 +30,11 @@ if( isset($var[0], $var[1]) && $var[0] == 'edit' )
 			<br /><br />
 			<input style="font-size: 22px; padding: 5px; width:100%" name="title" value="'.htmlspecialchars($row['title'], ENT_QUOTES).'" />
 			<br /><br />
-			<textarea name="content">'.htmlspecialchars($row['content'], ENT_QUOTES).'</textarea>
+			<textarea id="ckeditor" name="content">'.htmlspecialchars($row['content'], ENT_QUOTES).'</textarea>
 			<br />
 			<input type="submit" value="Save" /> '.$msg.'
 		</form>
 	';
-	
-	if(is_dir($this->request->absbase.'system/lib/tinymce/'))
-		$html .= file_get_contents(dirname(__FILE__).'/js.html');
-	else
-		echo 'No "TinyMCE" package found at '.$this->request->absbase.'system/lib/tinymce/';
 } 
 else if( isset($var[0]) && $var[0] == 'rm' )
 {
@@ -69,16 +64,11 @@ else if( isset($var[0]) && $var[0] == 'new' )
 			<br /><br />
 			<input style="font-size: 22px; padding: 5px; width:100%" name="title" />
 			<br /><br />
-			<textarea name="content"></textarea>
+			<textarea id="ckeditor" name="content"></textarea>
 			<br />
 			<input type="submit" value="Submit" /> '.$msg.'
 		</form>
 	';
-	
-	if(is_dir($this->request->absbase.'system/lib/tinymce/'))
-		$html .= file_get_contents(dirname(__FILE__).'/js.html');
-	else
-		echo 'No "TinyMCE" package found at '.$this->request->absbase.'system/lib/tinymce/';
 } 
 else 
 {
@@ -99,5 +89,6 @@ else
 }
 
 echo $html;
+readfile(ROOT.'system/lib/editor.js');
 
 ?>
