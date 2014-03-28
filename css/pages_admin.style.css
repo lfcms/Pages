@@ -1,0 +1,87 @@
+.delete_item {
+	float: right;
+}
+.dashboard_manage {
+	border: none;
+	background:  none;
+	padding: 0;
+}
+.pages-wrapper {
+	border: 1px solid #bbb;
+	margin: 0 15px 15px 0;
+	width: 630px;
+	float: left;
+}
+.new-page-button {
+    border-bottom: 1px solid #bbb;
+    padding: 15px 0;
+    background-color: #fff;
+}
+.new-page-button a {
+    margin: auto;
+    text-align:  center;
+    display: block;
+    width: 80%;
+    font-size: 14px;
+    padding: 10px 0;
+    color:  #fff;
+    border: 1px solid #bbb;
+    background-color: #00884F;
+}
+.new-page-button a:hover {
+	background-color: #00aa63;
+}
+.pages-list {
+
+}
+.pages-list li {
+    border-left: 3px solid #bbb;
+    border-bottom: 1px solid #e2e2e2;
+    background-color: #f5f5f5;
+    padding: 15px;
+
+}
+.pages-list li:last-child {
+	border-bottom: none;
+}
+.pages-list li:hover {
+	background: #fff;
+	border-bottom-color: #bbb;
+	border-left-color: #0063aa;
+}
+.save-page-button {
+    text-align: center;
+    border-bottom: 1px solid #bbb;
+    padding: 15px 0;
+    background-color: #fff;
+}
+.save-page-button input {
+    margin: auto;
+    text-align:  center;
+    display: block;
+    width: 80%;
+    font-size: 14px;
+    padding: 10px 0;
+    color:  #fff;
+    border: 1px solid #bbb;
+    background-color: #00884F;
+}
+.save-page-button input:hover {
+	background-color: #00aa63;
+}
+.page_title {
+	background-color: #f5f5f5;
+	padding: 15px;
+}
+.page_title input {
+	border: 1px solid #bbb;
+	font-size: 22px;
+	padding: 5px;
+	width:100%
+}
+.page_title input:focus {
+	border-color: #00aa63;
+}
+#cke_ckeditor {
+	border: none;
+}

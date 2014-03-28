@@ -1,6 +1,12 @@
-<form class="pages_edit_article" action="%baseurl%apps/manage/pages/newarticle/" method="post">
-	<input name="title" class="article_title" placeholder="Title" />
-	<textarea id="ckeditor" name="content"></textarea>
-	<input class="submit-button" type="submit" value="Save" /> <?=$msg;?>
-</form>
-<?php readfile(ROOT.'system/lib/editor.js'); /* ckeditor */ ?>
+<div class="pages-wrapper">
+	<form class="pages_edit_article" action="%baseurl%apps/manage/pages/newarticle/" method="post">
+		<div class="save-page-button">
+			<input type="submit" class="submit-button" value="Save Page" /> <?=$msg;?>
+		</div>
+		<div class="page_title">
+			<input name="title" placeholder="Page Title" />
+		</div>
+		<textarea id="ckeditor" name="content"></textarea>
+	</form>
+	<?php readfile(ROOT.'system/lib/editor.js'); /* ckeditor */ ?>
+</div>
