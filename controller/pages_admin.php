@@ -19,8 +19,8 @@ class pages_admin extends app
 			$result = $this->db->query("
 				UPDATE lf_pages 
 				SET 
-					title 	= '".mysql_real_escape_string($_POST['title'])."', 
-					content = '".mysql_real_escape_string($_POST['content'])."' 
+					title 	= '".$this->db->escape($_POST['title'])."', 
+					content = '".$this->db->escape($_POST['content'])."' 
 				WHERE id = ".$match[0]
 			);
 			$msg = 'Saved.';
@@ -44,7 +44,7 @@ class pages_admin extends app
 			$this->db->query("INSERT INTO lf_pages (`id`, `title`, `content`)
 				VALUES (NULL, 
 					'".htmlspecialchars($_POST['title'], ENT_QUOTES)."', 
-					'".mysql_real_escape_string($_POST['content'])."' 
+					'".$this->db->escape($_POST['content'])."' 
 				)");
 			
 			redirect302($this->lf->appurl.'edit/'.$this->db->last());
