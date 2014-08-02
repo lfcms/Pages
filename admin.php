@@ -1,1 +1,5 @@
-<?php echo $this->mvc('pages_admin');
+<?php 
+
+include 'model/pages.orm.php';
+
+echo $this->mvc('pages_admin');

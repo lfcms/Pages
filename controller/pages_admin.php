@@ -5,50 +5,36 @@ class pages_admin extends app
 {
 	public function main($args)
 	{
-		$pages = $this->db->fetchall('SELECT id, title FROM lf_pages ORDER BY id');
+		$pages = pages_orm::all();
 		include 'view/pages_admin.main.php';
 	}
 	
 	public function edit($args)
 	{
-		if(!preg_match('/^[0-9]+$/', $args[1], $match)) return 'Invalid Edit Request :(';
-		
-		// Update page from $_POST if submitted
+		$id = intval($args[1]);
+			
+		// Update from $_POST
 		if(count($_POST) > 0)
-		{	
-			$result = $this->db->query("
-				UPDATE lf_pages 
-				SET 
-					title 	= '".$this->db->escape($_POST['title'])."', 
-					content = '".$this->db->escape($_POST['content'])."' 
-				WHERE id = ".$match[0]
-			);
-			$msg = 'Saved.';
-		}
+			pages_orm::savepage($id, $_POST);
 		
-		$page = $this->db->fetch("SELECT * FROM lf_pages WHERE id = ".$match[0]);
+		$page = pages_orm::getpage($id);
 		
 		include 'view/pages_admin.edit.php';
 	}
 	
 	public function rm($args)
 	{
-		$this->db->query("DELETE FROM lf_pages WHERE id = ".intval($args[1]));
+		pages_orm::rmpage(intval($args[1]));
 		redirect302();
 	}
 	
 	public function newarticle($args)
-	{
+	{		
 		if(count($_POST) > 0)
-		{	
-			$this->db->query("INSERT INTO lf_pages (`id`, `title`, `content`)
-				VALUES (NULL, 
-					'".htmlspecialchars($_POST['title'], ENT_QUOTES)."', 
-					'".$this->db->escape($_POST['content'])."' 
-				)");
-			
-			redirect302($this->lf->appurl.'edit/'.$this->db->last());
-		} 
+		{
+			$id = pages_orm::addpage($_POST);
+			redirect302($this->lf->appurl.'edit/'.$id);
+		}
 		
 		include 'view/pages_admin.newarticle.php';
 	}
