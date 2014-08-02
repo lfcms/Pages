@@ -1,8 +1,10 @@
 <?php
 
-$row = $this->db->fetch("SELECT * FROM lf_pages WHERE id = '".$_app['ini']."'");
+include 'model/pages.orm.php';
+
+$page = pages_orm::getpage($_app['ini']);
  
-echo '<h2>'.$row['title'].'</h2>';
-echo $row['content'];
+echo '<h2>'.$page['title'].'</h2>';
+echo $page['content'];
 
 ?>

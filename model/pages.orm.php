@@ -4,13 +4,12 @@ class pages_orm extends orm
 {
 	public function all()
 	{
-		return orm::q('lf_pages')->cols('id, title')->get();
+		return orm::q('lf_pages')->cols('id, title')->order()->get();
 	}
 	
 	public function getpage($id)
 	{
-		$page = orm::q('lf_pages')->filterByid($id)->get();
-		return $page[0];
+		return orm::q('lf_pages')->filterByid($id)->first();
 	}
 	
 	public function rmpage($id)
