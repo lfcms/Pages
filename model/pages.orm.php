@@ -22,8 +22,8 @@ class pages_orm extends orm
 		$page = orm::q('lf_pages')->filterByid($id);
 		foreach($data as $col => $val)
 		{
-			$method = "set$col";
-			$page->$method($val);
+			$setcol = "set$col";
+			$page->$setcol($val);
 		}
 		$page->save();
 	}
@@ -33,8 +33,8 @@ class pages_orm extends orm
 		$insert = orm::q('lf_pages')->add();
 		foreach($data as $col => $val)
 		{
-			$method = "set$col";
-			$insert->$method($val);
+			$setcol = "set$col";
+			$insert->$setcol($val);
 		}
 		return $insert->save();
 	}
