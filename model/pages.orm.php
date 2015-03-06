@@ -2,7 +2,7 @@
 
 class pages_orm extends orm
 {
-	public function all()
+	public function allpages()
 	{
 		return orm::q('lf_pages')->cols('id, title')->order()->get();
 	}
