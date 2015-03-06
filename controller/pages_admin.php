@@ -5,7 +5,7 @@ class pages_admin extends app
 {
 	public function main($args)
 	{
-		$pages = pages_orm::all();
+		$pages = pages_orm::allpages();
 		include 'view/pages_admin.main.php';
 	}
 	
