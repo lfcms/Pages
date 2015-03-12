@@ -1,12 +1,18 @@
-<div class="pages-wrapper">
-	<form class="pages_edit_article" action="%baseurl%apps/manage/pages/newarticle/" method="post">
-		<div class="save-page-button">
-			<input type="submit" class="submit-button" value="Save Page" /> <?=isset($msg)?$msg:'';?>
-		</div>
-		<div class="page_title">
-			<input name="title" placeholder="Page Title" />
-		</div>
-		<textarea id="ckeditor" name="content"></textarea>
-	</form>
-	<?php readfile(ROOT.'system/lib/editor.js'); /* ckeditor */ ?>
-</div>
+Back to <a href="%appurl%">pages list</a>
+
+<h3>New Page</h3>
+
+<?=$this->notice();?>
+
+<form class="martop" action="%appurl%newarticle" method="post">
+	
+	Title:
+	<input style="width: 100%; padding: 2px; font-size: 20px" name="title" placeholder="Page Title" />
+
+	<p>Editor supports MarkDown via <a target="_blank" href="http://parsedown.org/demo">Parsedown</a></p>
+	
+	<textarea style="width: 100%; height: 500px; padding: 2px; margin-top: 10px;" id="ckeditor" name="content" placeholder="Page Content"></textarea>
+	
+	<input type="submit" class="blue martop" value="Save Page" />
+</form>
+<?php /*readfile(ROOT.'system/lib/editor.js');*/ ?>

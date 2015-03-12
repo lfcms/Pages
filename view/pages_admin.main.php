@@ -1,10 +1,12 @@
-<div class="pages-wrapper">
-	<div class="new-page-button">
-		<a href="%baseurl%apps/manage/pages/newarticle/">Create New Page</a>
-	</div>
-	<ol class="pages-list">
-		<?php foreach($pages as $page): ?>
-		<li><a <?=jsprompt('Are you sure you want to delete this?');?> class="delete_item" href="%baseurl%apps/manage/pages/rm/<?=$page['id'];?>/">x</a> <a href="%baseurl%apps/manage/pages/edit/<?=$page['id'];?>/"><?=$page['title'];?></a></li>
-		<?php endforeach; ?>
-	</ol>
-</div>
+<a href="%appurl%newarticle/" class="blue button marbot">Create New Page</a>
+
+<ol class="efvlist">
+	<?php foreach($pages as $page): ?>
+	
+	<li>
+		<a <?=jsprompt();?> class="x pull-right" href="%appurl%rm/<?=$page['id'];?>/">x</a> 
+		<a href="%appurl%edit/<?=$page['id'];?>/"><?=$page['title'];?></a>
+	</li>
+	
+	<?php endforeach; ?>
+</ol>

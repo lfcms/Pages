@@ -15,7 +15,11 @@ class pages_admin extends app
 			
 		// Update from $_POST
 		if(count($_POST) > 0)
+		{
 			pages_orm::savepage($id, $_POST);
+			$this->notice('Page Saved');
+			redirect302();
+		}
 		
 		$page = pages_orm::getpage($id);
 		
@@ -33,6 +37,7 @@ class pages_admin extends app
 		if(count($_POST) > 0)
 		{
 			$id = pages_orm::addpage($_POST);
+			$this->notice('Page Created');
 			redirect302($this->lf->appurl.'edit/'.$id);
 		}
 		
