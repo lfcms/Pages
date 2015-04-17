@@ -5,12 +5,15 @@ class pages_admin extends app
 {
 	public function main($args)
 	{
-		$pages = pages_orm::allpages();
+		$this->lf->startTimer(__METHOD__);
+		$pages = Page::q()->get();
 		include 'view/pages_admin.main.php';
+		$this->lf->endTimer(__METHOD__);
 	}
 	
 	public function edit($args)
 	{
+		$this->lf->startTimer(__METHOD__);
 		$id = intval($args[1]);
 			
 		// Update from $_POST
@@ -24,6 +27,7 @@ class pages_admin extends app
 		$page = pages_orm::getpage($id);
 		
 		include 'view/pages_admin.edit.php';
+		$this->lf->endTimer(__METHOD__);
 	}
 	
 	public function rm($args)
@@ -33,7 +37,8 @@ class pages_admin extends app
 	}
 	
 	public function newarticle($args)
-	{		
+	{
+		$this->lf->startTimer(__METHOD__);
 		if(count($_POST) > 0)
 		{
 			$id = pages_orm::addpage($_POST);
@@ -42,5 +47,6 @@ class pages_admin extends app
 		}
 		
 		include 'view/pages_admin.newarticle.php';
+		$this->lf->endTimer(__METHOD__);
 	}
 }

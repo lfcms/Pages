@@ -22,4 +22,3 @@
 		<div class="col-6"><a class="red button" href="%appurl%"><i class="fa fa-ban"></i> Cancel</a></div>
 	</div>
 </form>
-<?php /*readfile(ROOT.'system/lib/editor.js');*/ ?>
