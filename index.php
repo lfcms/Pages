@@ -1,9 +1,29 @@
 <?php
 
-include ROOT.'system/lib/3rdparty/parsedown/Parsedown.php';
-include 'model/page.php';
+//echo orm::qUsers('lf')->cols('id, user, display_name');
 
+/*
+
+$user = new User();
+$user->refreshTimeout()->toSession();
+
+// ->fromSession()
+
+pre($user, 'var_dump');
+echo 'session:';
+pre($_SESSION, 'var_dump');
+
+*/
+
+	
+	
+	
+	
+
+include LF.'system/lib/3rdparty/parsedown/Parsedown.php';
+include 'model/page.php';
 //if($_app['ini'] != '')
+
 
 //$this->lf->setTitle($page['title']);
 $page = Page::get($_app['ini']);
