@@ -1,40 +1,26 @@
 <?php
 
-class Page
+class Page extends orm
 {
-	public function __construct()
-	{
-		$this->db = db::init();
-		//$this->router = Router::init();
-	}
+	//public $table = 'lf_pages';
 	
-	public function get($id)
+	/*public function get($id = null)
 	{
 		return orm::q('lf_pages')->get1byid($id);
-	}
+	}*/
+	protected $table = 'lf_pages';
 	
-	public static function query()
-	{
-		return orm::q('lf_pages');
-	}
-	
-	// q is an alias for query()
-	public static function q()
-	{
-		return self::query();
-	}
-	
-	public function allpages()
+	public function pageList()
 	{
 		return orm::q('lf_pages')->cols('id, title')->order()->get();
 	}
 	
-	public function getpage($id)
+	public function getById($id)
 	{
 		return orm::q('lf_pages')->filterByid($id)->first();
 	}
 	
-	public function rmpage($id)
+	public function rmById($id)
 	{
 		return orm::q('lf_pages')->filterByid($id)->delete();
 	}

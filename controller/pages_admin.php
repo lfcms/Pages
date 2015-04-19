@@ -6,7 +6,10 @@ class pages_admin extends app
 	public function main($args)
 	{
 		$this->lf->startTimer(__METHOD__);
-		$pages = Page::q()->get();
+		//$pages = Page::q()->get();
+		
+		$pages = (new Page)->cols('id, title')->getAll();
+		
 		include 'view/pages_admin.main.php';
 		$this->lf->endTimer(__METHOD__);
 	}
@@ -19,12 +22,12 @@ class pages_admin extends app
 		// Update from $_POST
 		if(count($_POST) > 0)
 		{
-			pages_orm::savepage($id, $_POST);
+			(new Pages)->updateById($id, $_POST);
 			$this->notice('Page Saved');
 			redirect302();
 		}
 		
-		$page = pages_orm::getpage($id);
+		$page = (new Page)->getById($id);
 		
 		include 'view/pages_admin.edit.php';
 		$this->lf->endTimer(__METHOD__);
