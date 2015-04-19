@@ -6,7 +6,7 @@
 	
 	<div class="row">
 		<div class="col-10">
-			<input type="text" name="title" placeholder="Page Title" />
+			<input style="font-size: 24px;" type="text" name="title" placeholder="Page Title" />
 		</div>
 		<div class="col-2">
 			<a target="_blank" class="button" href="http://parsedown.org/demo">M <i class="fa fa-long-arrow-down"></i></a>
@@ -14,7 +14,7 @@
 	</div>
 	<div class="row">
 		<div class="col-12">
-			<textarea class="h400 scroll-y" id="ckeditor" name="content" placeholder="Create a page using HTML or Markdown..."></textarea>
+			<textarea style="width: 100%" class="h400 scroll-y" id="ckeditor" name="content" placeholder="Create a page using HTML or Markdown..."></textarea>
 		</div>
 	</div>
 	<div class="row">

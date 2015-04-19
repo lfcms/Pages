@@ -1,4 +1,7 @@
-<a href="%appurl%newarticle/" class="blue button marbot"><i class="fa fa-plus"></i> New Page</a>
+<a href="%appurl%newarticle/" class="blue button marbot">
+	<i class="fa fa-plus"></i> 
+	New Page
+</a>
 
 <ol class="efvlist rounded">
 	<?php foreach($pages as $page): ?>
