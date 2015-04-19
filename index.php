@@ -1,32 +1,12 @@
 <?php
 
-//echo orm::qUsers('lf')->cols('id, user, display_name');
-
-/*
-
-$user = new User();
-$user->refreshTimeout()->toSession();
-
-// ->fromSession()
-
-pre($user, 'var_dump');
-echo 'session:';
-pre($_SESSION, 'var_dump');
-
-*/
-
-	
-	
-	
-	
-
+include 'model/page.php'; // idk if I need this here...
 include LF.'system/lib/3rdparty/parsedown/Parsedown.php';
-include 'model/page.php';
-//if($_app['ini'] != '')
 
+$page = (new Page)
+	->byId($_app['ini'])
+	->get();
 
-//$this->lf->setTitle($page['title']);
-$page = Page::get($_app['ini']);
 $this->lf->select['title'] = $page['title'];
 
 $Parsedown = new Parsedown();
