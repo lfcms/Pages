@@ -3,14 +3,9 @@
 include 'model/page.php'; // idk if I need this here...
 include LF.'system/lib/3rdparty/parsedown/Parsedown.php';
 
-$page = (new Page)
-	->byId($_app['ini'])
-	->get();
+$page = (new Page)->getById($_app['ini']);
 
 $this->lf->select['title'] = $page['title'];
-
-$Parsedown = new Parsedown();
-echo '<h2>'.$page['title'].'</h2>';
 
 // apploader for separate apps.
 // this addresses the inability to have a home page composed of 
@@ -40,8 +35,13 @@ foreach($match[1] as $replace)
 	$ftimer = microtime(true);
 	//$frame = str_replace('{'.$replace.'}', $this->apploader($app, $ini, $vars), $frame);
 	$frame = str_replace('{'.$replace.'}', $this->apploader($app, $ini, $vars), $frame); // needs to be preg replace so it is replaced 1 time   
-	/*$this->app_timer['Frontpage ('.$count++.') - '.$app.'/'.$vars[0]] = microtime(true) - $ftimer; //timer for app*/
+	//$this->lf->timer['Frontpage ('.$count++.') - '.$app.'/'.$this->vars[0]] = microtime(true) - $ftimer; //timer for app
 }
+
 chdir($cwd);
 
-echo $Parsedown->text($frame);
+?>
+
+<h2><?=$page['title'];?></h2>
+
+<?=(new Parsedown)->text($frame);?>
