@@ -8,7 +8,9 @@ class pages_admin extends app
 		$this->lf->startTimer(__METHOD__);
 		//$pages = Page::q()->get();
 		
-		$pages = (new Page)->cols('id, title')->getAll();
+		$pages = (new LfPages)
+			->cols('id, title')
+			->getAll();
 		
 		include 'view/pages_admin.main.php';
 		$this->lf->endTimer(__METHOD__);
@@ -22,12 +24,12 @@ class pages_admin extends app
 		// Update from $_POST
 		if(count($_POST) > 0)
 		{
-			(new Page)->updateById($id, $_POST);
+			(new LfPages)->updateById($id, $_POST);
 			$this->notice('Page Saved');
 			redirect302();
 		}
 		
-		$page = (new Page)->getById($id);
+		$page = (new LfPages)->getById($id);
 		
 		include 'view/pages_admin.edit.php';
 		$this->lf->endTimer(__METHOD__);
@@ -35,7 +37,7 @@ class pages_admin extends app
 	
 	public function rm($args)
 	{
-		(new Page)->byId(intval($args[1]))->delete();
+		(new LfPages)->deleteById( intval($args[1]) );
 		
 		redirect302();
 	}
@@ -45,7 +47,7 @@ class pages_admin extends app
 		$this->lf->startTimer(__METHOD__);
 		if(count($_POST) > 0)
 		{
-			$id = (new Page)->insertArray($_POST);
+			$id = (new LfPages)->insertArray($_POST);
 			$this->notice('Page Created');
 			redirect302($this->lf->appurl.'edit/'.$id);
 		}

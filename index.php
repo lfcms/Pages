@@ -1,9 +1,8 @@
 <?php
 
-include 'model/page.php'; // idk if I need this here...
 include LF.'system/lib/3rdparty/parsedown/Parsedown.php';
 
-$page = (new Page)->getById($_app['ini']);
+$page = (new LfPages)->getById($_app['ini']);
 
 $this->lf->select['title'] = $page['title'];
 

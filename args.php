@@ -1,8 +1,10 @@
 <?php
 
-	$sql = 'SELECT id, title FROM lf_pages';
+	/*$sql = 'SELECT id, title FROM lf_pages';
 	$this->db->query($sql);
-	$pages = $this->db->fetchall();
+	$pages = $this->db->fetchall();*/
+	
+	$pages = (new LfPages)->cols('id, title')->getAll();
 	
 	if(count($pages))
 	{
