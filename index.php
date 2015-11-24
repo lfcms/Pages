@@ -38,10 +38,7 @@ foreach($match[1] as $replace)
                 $vars = explode('/', $parts[3]);                                                     
         if(isset($parts[4]) && $parts[4] != '')                                                      
                 $ini = $parts[4];                                                                    
-                                                                                                     
-echo LF.'apps/'.$app;                                                                                
-echo '<br>'.$controller;                                                                             
-pre($vars);                                                                                          
+                                                                                      
         chdir(LF.'apps/'.$app);                                                                      
         $ftimer = microtime(true);                                                                   
         //$frame = str_replace('{'.$replace.'}', $this->apploader($app, $ini, $vars), $frame);       
