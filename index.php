@@ -51,5 +51,7 @@ pre($vars);
 er; //timer for app*/                                                                                
 }                                                                                                    
 chdir($cwd);                                                                                         
+
+$frame = (new User)->resolveIds($frame);                                                             
                                                                                                      
-echo $Parsedown->text($frame);                                                                       
+echo $Parsedown->text($frame); 
