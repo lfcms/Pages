@@ -42,8 +42,10 @@ foreach($match[1] as $replace)
         chdir(LF.'apps/'.$app);                                                                      
         $ftimer = microtime(true);                                                                   
         //$frame = str_replace('{'.$replace.'}', $this->apploader($app, $ini, $vars), $frame);       
-        $frame = str_replace('{'.$replace.'}', $this->apploader($controller, $ini, $vars), $frame); /
-/ needs to be preg replace so it is replaced 1 time                                                  
+        $frame = str_replace('{'.$replace.'}', $this->apploader($controller, $ini, $vars), $frame);
+        
+        // needs to be preg replace so it is replaced 1 time                                                  
+        
         /*$this->app_timer['Frontpage ('.$count++.') - '.$app.'/'.$vars[0]] = microtime(true) - $ftim
 er; //timer for app*/                                                                                
 }                                                                                                    
