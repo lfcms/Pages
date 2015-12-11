@@ -2,18 +2,16 @@
 				
 include LF.'system/lib/3rdparty/parsedown/Parsedown.php';                                            
 
-$page = (new LfPages)                                                                                   
-        ->byId($_app['ini'])                                                                         
-        ->get();                                                                                     
+$page = (new LfPages)->getById($_app['ini']);
 
 $this->lf->select['title'] = $page['title'];                                                         
 
 $Parsedown = new Parsedown();                                                                        
-echo '<h2>'.$page['title'].'</h2>';                                                            
+//echo '<h2>'.$page['title'].'</h2>';                                                            
 
 // apploader for separate apps.                                                                      
 // this addresses the inability to have a home page composed of                                      
-$frame = $page['content'];                                                                           
+$frame = $Parsedown->text($page['content']);                                                                           
 
 $count = 1;                                                                                          
 $cwd = getcwd();                                                                                     
@@ -50,6 +48,4 @@ er; //timer for app*/
 }                                                                                                    
 chdir($cwd);                                                                                         
 
-$frame = (new User)->resolveIds($frame);                                                             
-
-echo $Parsedown->text($frame); 
+echo $frame; //(new User)->resolveIds( $frame );

@@ -12,7 +12,7 @@
 		$args .= '<select name="ini">
 			<option value="">-- Select an article --</option>';
 		foreach($pages as $page)
-			$args .= '<option value="'.$page['id'].'">'.$page['id'].' - '.$page['title'].'</option>';
+			$args .= '<option value="'.$page['id'].'">'.$page['id'].'. '.$page['title'].'</option>';
 		$args .= '</select> ';
 		
 		$args .= '<a href="%baseurl%apps/pages/edit/'.$save['ini'].'">Edit this Page</a>  or ';

@@ -7,8 +7,12 @@
 	<?php foreach($pages as $page): ?>
 	
 	<li> 
-		<a href="%appurl%edit/<?=$page['id'];?>/"><?=$page['title'];?></a>
-		<a <?=jsprompt();?> class="x pull-right" href="%appurl%rm/<?=$page['id'];?>/"><i class="fa fa-trash"></i></a>
+		<?=$page['id'];?>. 
+		<?=$page['title'];?>
+		<div id="page_tools" class="pull-right">
+			<a title="Edit Page" href="%appurl%edit/<?=$page['id'];?>/"><i class="fa fa-pencil"></i></a>
+			<a title="Delete Page" <?=jsprompt();?> class="x" href="%appurl%rm/<?=$page['id'];?>/"><i class="fa fa-trash"></i></a>
+		</div>
 	</li>
 	
 	<?php endforeach; ?>
