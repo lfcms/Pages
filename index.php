@@ -4,7 +4,7 @@ include LF.'system/lib/3rdparty/parsedown/Parsedown.php';
 
 $page = (new LfPages)->getById($_app['ini']);
 
-$this->lf->select['title'] = $page['title'];                                                         
+$this->lf->select['title'] .= ' | '.$page['title'];                                                         
 
 $Parsedown = new Parsedown();                                                                        
 //echo '<h2>'.$page['title'].'</h2>';                                                            

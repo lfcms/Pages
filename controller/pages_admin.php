@@ -9,8 +9,8 @@ class pages_admin extends app
 		//$pages = Page::q()->get();
 		
 		$pages = (new LfPages)
-			->cols('id, title')
-			->getAll();
+					->cols('id, title')
+					->getAll();
 		
 		include 'view/pages_admin.main.php';
 		$this->lf->endTimer(__METHOD__);
@@ -30,6 +30,9 @@ class pages_admin extends app
 		}
 		
 		$page = (new LfPages)->getById($id);
+		
+		
+		$linecount = substr_count( $page['content'], "\n" ) + 1 + 15;
 		
 		include 'view/pages_admin.edit.php';
 		$this->lf->endTimer(__METHOD__);
