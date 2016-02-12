@@ -1,11 +1,13 @@
 <link href="%relbase%lf/apps/pages/css/pages_admin.style.css" rel="stylesheet">
 <?php
 
-class pages_admin extends app
+class pages_admin
 {
-	public function main($args)
+	public function main()
 	{
-		$this->lf->startTimer(__METHOD__);
+		$args = \lf\www('Param');
+		
+		(new \lf\cache)->startTimer(__METHOD__);
 		//$pages = Page::q()->get();
 		
 		$pages = (new LfPages)
@@ -13,49 +15,51 @@ class pages_admin extends app
 					->getAll();
 		
 		include 'view/pages_admin.main.php';
-		$this->lf->endTimer(__METHOD__);
+		(new \lf\cache)->endTimer(__METHOD__);
 	}
 	
-	public function edit($args)
+	public function edit()
 	{
-		$this->lf->startTimer(__METHOD__);
+		$args = \lf\www('Param');
+		(new \lf\cache)->startTimer(__METHOD__);
 		$id = intval($args[1]);
 			
 		// Update from $_POST
 		if(count($_POST) > 0)
 		{
 			(new LfPages)->updateById($id, $_POST);
-			$this->notice('Page Saved');
+			notice('Page Saved');
 			redirect302();
 		}
 		
 		$page = (new LfPages)->getById($id);
 		
-		
 		$linecount = substr_count( $page['content'], "\n" ) + 1 + 15;
 		
 		include 'view/pages_admin.edit.php';
-		$this->lf->endTimer(__METHOD__);
+		(new \lf\cache)->endTimer(__METHOD__);
 	}
 	
-	public function rm($args)
+	public function rm()
 	{
+		$args = \lf\www('Param');
 		(new LfPages)->deleteById( intval($args[1]) );
 		
 		redirect302();
 	}
 	
-	public function newarticle($args)
+	public function newarticle()
 	{
-		$this->lf->startTimer(__METHOD__);
+		$args = \lf\www('Param');
+		(new \lf\cache)->startTimer(__METHOD__);
 		if(count($_POST) > 0)
 		{
 			$id = (new LfPages)->insertArray($_POST);
-			$this->notice('Page Created');
+			notice('Page Created');
 			redirect302($this->lf->appurl.'edit/'.$id);
 		}
 		
 		include 'view/pages_admin.newarticle.php';
-		$this->lf->endTimer(__METHOD__);
+		(new \lf\cache)->endTimer(__METHOD__);
 	}
 }

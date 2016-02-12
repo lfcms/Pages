@@ -1,6 +1,6 @@
 <h3><i class="fa fa-plus"></i> New Page</h3>
 
-<?=$this->notice();?>
+<?=notice();?>
 
 <form class="martop" action="%appurl%newarticle" method="post">
 	

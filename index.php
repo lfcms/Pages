@@ -23,14 +23,15 @@ foreach($match[1] as $replace)
 
         if(!preg_match('/^'                                                                          
                 .'(?:([^#?\/]+))'       // [1] app                                                   
-                .'(?:\/([^\/#?]+))'     // [2] /controller                                           
+                .'(?:\/([^\/#?]+))'     // [2] /method                                           
                 .'(?:#([^?]+))?'        // [2] #vars                                                 
                 .'(?:\?(.*))?'          // [3] ?ini                                                  
-        .'$/', $replace, $parts)) continue;                                                          
-
+        .'$/', $replace, $parts)) 
+			continue;
+		
         $app = $parts[1];                                                                            
         if(isset($parts[2]) && $parts[2] != '')                                                      
-                $controller = $parts[2];                                                             
+                $controller = $parts[2];		
         if(isset($parts[3]) && $parts[3] != '')                                                      
                 $vars = explode('/', $parts[3]);                                                     
         if(isset($parts[4]) && $parts[4] != '')                                                      

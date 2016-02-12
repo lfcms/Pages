@@ -1,6 +1,6 @@
 <h3><i class="fa fa-pencil-square-o"></i> Edit Page</h3>
 
-<?=$this->notice();?>
+<?=notice();?>
 	
 <form class="martop" action="%appurl%edit/<?=$page['id'];?>/" method="post">
 
