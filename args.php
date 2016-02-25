@@ -15,13 +15,13 @@
 			$args .= '<option value="'.$page['id'].'">'.$page['id'].'. '.$page['title'].'</option>';
 		$args .= '</select> ';
 		
-		$args .= '<a href="'.\lf\www('Admin').'apps/pages/edit/'.$save['ini'].'">Edit this Page</a>  or ';
+		$args .= '<a href="'.\lf\requestGet('AdminUrl').'apps/pages/edit/'.$save['ini'].'">Edit this Page</a>  or ';
 		
 			
 		$args = str_replace('value="'.$save['ini'].'"', 'value="'.$save['ini'].'" selected="selected"', $args);
 	}
 	
-	$args .= '<a href="'.\lf\www('Admin').'apps/pages/new/">Create New Page</a>';
+	$args .= '<a href="'.\lf\requestGet('AdminUrl').'apps/pages/new/">Create New Page</a>';
 	
 	/*$args .= '<input type="checkbox" name="ini[title]" checked="checked">
 			Show Title';*/

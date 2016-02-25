@@ -5,7 +5,7 @@ class pages_admin
 {
 	public function main()
 	{
-		$args = \lf\www('Param');
+		$args =  \lf\requestGet('Param');
 		
 		(new \lf\cache)->startTimer(__METHOD__);
 		//$pages = Page::q()->get();
@@ -20,7 +20,7 @@ class pages_admin
 	
 	public function edit()
 	{
-		$args = \lf\www('Param');
+		$args =  \lf\requestGet('Param');
 		(new \lf\cache)->startTimer(__METHOD__);
 		$id = intval($args[1]);
 			
@@ -42,7 +42,7 @@ class pages_admin
 	
 	public function rm()
 	{
-		$args = \lf\www('Param');
+		$args =  \lf\requestGet('Param');
 		(new LfPages)->deleteById( intval($args[1]) );
 		
 		redirect302();
@@ -50,7 +50,7 @@ class pages_admin
 	
 	public function newarticle()
 	{
-		$args = \lf\www('Param');
+		$args =  \lf\requestGet('Param');
 		(new \lf\cache)->startTimer(__METHOD__);
 		if(count($_POST) > 0)
 		{
