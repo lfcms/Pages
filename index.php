@@ -13,6 +13,7 @@ $Parsedown = new Parsedown();
 // this addresses the inability to have a home page composed of                                      
 $frame = $Parsedown->text($page['content']);                                                                           
 
+/* need to fix this */
 $count = 1;                                                                                          
 $cwd = getcwd();                                                                                     
 preg_match_all('/{([^}]+)}/', $frame, $match);                                                       
@@ -50,3 +51,5 @@ er; //timer for app*/
 chdir($cwd);                                                                                         
 
 echo $frame; //(new User)->resolveIds( $frame );
+
+(new \lf\plugin)->run('post app pages');
