@@ -23,7 +23,7 @@ class pages_admin
 		$args =  \lf\requestGet('Param');
 		(new \lf\cache)->startTimer(__METHOD__);
 		$id = intval($args[1]);
-			
+		
 		// Update from $_POST
 		if(count($_POST) > 0)
 		{

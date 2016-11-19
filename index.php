@@ -1,10 +1,10 @@
 <?php                                                                                                       
 				
-include LF.'system/lib/3rdparty/parsedown/Parsedown.php';                                            
+include_once LF.'system/lib/3rdparty/parsedown/Parsedown.php';                                            
 
 $page = (new LfPages)->getById($_app['ini']);
 
-$this->lf->select['title'] .= ' | '.$page['title'];                                                         
+(new \lf\template)->appendTitle($page['title']); 
 
 $Parsedown = new Parsedown();                                                                        
 //echo '<h2>'.$page['title'].'</h2>';                                                            
