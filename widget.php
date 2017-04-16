@@ -22,6 +22,6 @@
 //include __DIR__.'/model/blog.php';
 
 foreach( (new \LfPages)->order('id', 'DESC')->limit(5)->getAll() as $page ): ?>
-	<li><a href="<?=\lf\requestGet('AdminUrl');?>apps/blog/edit/<?=$page['id'];?>"><?=$page['title'];?></a></li>
+	<li><a href="<?=\lf\requestGet('AdminUrl');?>apps/pages/edit/<?=$page['id'];?>"><?=$page['title'];?></a></li>
 <?php endforeach; ?>
 </ul>
